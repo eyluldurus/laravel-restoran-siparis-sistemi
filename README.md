@@ -3,7 +3,7 @@ QR Kod Destekli Restoran Sipariş Sistemi
 
 Bu proje Laravel kullanılarak geliştirilmiş bir restoran sipariş sistemidir.
 
-Özellikler
+Özellikler:
 QR kod ile menüye erişim
 Masa bazlı sipariş sistemi
 Ürün listeleme ve arama
@@ -15,7 +15,7 @@ Dashboard ekranı
 QR kod yönetimi
 Menü ekleme, düzenleme ve silme
 
-Kullanılan Teknolojiler
+Kullanılan Teknolojiler:
 Laravel
 PHP
 MySQL
@@ -25,5 +25,5 @@ CSS
 Blade Template Engine
 Composer
 
-Proje Amacı
+Proje Amacı:
 Müşterilerin masalarda bulunan QR kodları okutarak sipariş verebilmesini ve restoran yönetiminin siparişleri takip edebilmesini sağlamaktır.
