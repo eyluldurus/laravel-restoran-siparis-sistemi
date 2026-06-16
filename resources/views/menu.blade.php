@@ -116,6 +116,35 @@
     🍽️ Restoran Menü
 </div>
 
+<div style="
+    background:white;
+    padding:15px;
+    text-align:center;
+    box-shadow:0 2px 5px rgba(0,0,0,0.1);
+">
+
+    <a href="/dashboard"
+       style="margin:0 10px;text-decoration:none;font-weight:bold;color:#2563eb;">
+       🏠 Dashboard
+    </a>
+
+    <a href="/menu"
+       style="margin:0 10px;text-decoration:none;font-weight:bold;color:#2563eb;">
+       📋 Menü Yönetimi
+    </a>
+
+    <a href="/siparisler"
+       style="margin:0 10px;text-decoration:none;font-weight:bold;color:#2563eb;">
+       🧾 Siparişler
+    </a>
+
+    <a href="/qrcode"
+       style="margin:0 10px;text-decoration:none;font-weight:bold;color:#2563eb;">
+       🔳 QR Kodlar
+    </a>
+
+</div>
+
 <a href="/menu/ekle" class="add">+ Yeni Menü Ekle</a>
 
 <div class="categories">

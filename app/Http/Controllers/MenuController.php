@@ -7,24 +7,23 @@ use App\Models\Menu;
 
 class MenuController extends Controller
 {
-   public function index(Request $request)
-{
-    $kategori = $request->kategori;
+    // Menü listeleme + filtre
+    public function index(Request $request)
+    {
+        $menus = $request->kategori
+            ? Menu::where('kategori', $request->kategori)->get()
+            : Menu::all();
 
-    if ($kategori) {
-        $menus = Menu::where('kategori', $kategori)->get();
-    } else {
-        $menus = Menu::all();
+        return view('menu', compact('menus'));
     }
 
-    return view('menu', compact('menus'));
-}
-
+    // Menü ekleme sayfası
     public function create()
     {
         return view('ekle');
     }
 
+    // Menü ekleme işlemi
     public function store(Request $request)
     {
         $request->validate([
@@ -38,27 +37,29 @@ class MenuController extends Controller
         $data = $request->all();
 
         if ($request->hasFile('resim')) {
-            $path = $request->file('resim')->store('images', 'public');
-            $data['resim'] = $path;
+            $data['resim'] = $request->file('resim')->store('images', 'public');
         }
 
         Menu::create($data);
 
-        return redirect('/menu');
+        return redirect()->route('menu.index');
     }
 
+    // Menü silme
     public function delete($id)
     {
-        Menu::find($id)->delete();
-        return redirect('/menu');
+        Menu::findOrFail($id)->delete();
+        return redirect()->route('menu.index');
     }
 
+    // Menü düzenleme sayfası
     public function edit($id)
     {
-        $menu = Menu::find($id);
+        $menu = Menu::findOrFail($id);
         return view('duzenle', compact('menu'));
     }
 
+    // Menü güncelleme
     public function update(Request $request, $id)
     {
         $request->validate([
@@ -69,7 +70,7 @@ class MenuController extends Controller
             'kategori' => 'nullable|string'
         ]);
 
-        $menu = Menu::find($id);
+        $menu = Menu::findOrFail($id);
 
         $data = [
             'ad' => $request->ad,
@@ -79,12 +80,11 @@ class MenuController extends Controller
         ];
 
         if ($request->hasFile('resim')) {
-            $path = $request->file('resim')->store('images', 'public');
-            $data['resim'] = $path;
+            $data['resim'] = $request->file('resim')->store('images', 'public');
         }
 
         $menu->update($data);
 
-        return redirect('/menu');
+        return redirect()->route('menu.index');
     }
 }
